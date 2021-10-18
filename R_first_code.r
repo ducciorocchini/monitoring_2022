@@ -12,3 +12,11 @@ fishes
 # plot the diversity of fishes (y) versus the amount of water (x)
 # a funtcion is used with arguments inside! 
 plot(water, fishes)
+
+# the data we developed can be stored in a table
+# a table in R is called data frame
+
+streams <- data.frame(water, fishes)
+
+
+
