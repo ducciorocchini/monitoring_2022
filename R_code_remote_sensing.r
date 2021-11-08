@@ -8,7 +8,7 @@
 library(raster)
 
 # Set the working directory
-setwd("~/lab/") # Linux
+setwd("~/lab/") # Linux 
 # setwd("C:/lab/")  # windows
 # setwd("/Users/name/lab/") # mac
 
@@ -44,7 +44,7 @@ plot(l2011$B2_sre, col=cl)
 
 # change the colorRampPalette with dark green, green, and light green, e.g. clg 
 clg <- colorRampPalette(c("dark green","green","light green"))(100)
-plot(l2011$B2_sre, col=clg)
+plot(l2011$B2_sre, col=clg)(
 
 # do the same for the blue band using "dark blue", "blue", and "light blue"
 # B1
@@ -62,21 +62,74 @@ plot(l2011$B1_sre, col=clb)
 plot(l2011$B2_sre, col=clg)
 
 
+#--- day 3
 
+plot(l2011$B1_sre)
 
+# plot the blue band using a blue colorRampPalette
+clb <- colorRampPalette(c("dark blue","blue","light blue"))(100)
+plot(l2011$B1_sre, col=clb)
 
+# multiframe
+par(mfrow=c(1,2)) # the first number is the number of rows in the multiframe, while the second one is the mnumber of columns
 
+# plot the blue and the green besides, with different colorRampPalette
+clb <- colorRampPalette(c("dark blue","blue","light blue"))(100)
+plot(l2011$B1_sre, col=clb)
 
+clg <- colorRampPalette(c("dark green","green","light green"))(100)
+plot(l2011$B2_sre, col=clg)
 
+# Exercirse: put the plots one on top of the other
+# invert the number of rows and the number of columns
+  
+par(mfrow=c(2,1)) # the first number is the number of rows in the multiframe, while the second one is the mnumber of columns
 
+# plot the blue and the green besides, with different colorRampPalette
+clb <- colorRampPalette(c("dark blue","blue","light blue"))(100)
+plot(l2011$B1_sre, col=clb)
 
+clg <- colorRampPalette(c("dark green","green","light green"))(100)
+plot(l2011$B2_sre, col=clg)
 
+# Exercise: plot the first four bands with two rows and two columns
+par(mfrow=c(2,2)) # the first number is the number of rows in the multiframe, while the second one is the mnumber of columns
 
+clb <- colorRampPalette(c("dark blue","blue","light blue"))(100)
+plot(l2011$B1_sre, col=clb)
 
+clg <- colorRampPalette(c("dark green","green","light green"))(100)
+plot(l2011$B2_sre, col=clg)
 
+clr <- colorRampPalette(c("dark red","red","pink"))(100)
+plot(l2011$B3_sre, col=clr)
+  
+clnir <- colorRampPalette(c("red","orange","yellow"))(100)
+plot(l2011$B4_sre, col= clnir)
+  
+# dev.off()
+ 
+plotRGB(l2011, r=3, g=2, b=1, stretch="Lin")  # natural colours
+plotRGB(l2011, r=4, g=3, b=2, stretch="Lin")  # false colours
+plotRGB(l2011, r=3, g=4, b=2, stretch="Lin")  # false colours
+plotRGB(l2011, r=3, g=2, b=4, stretch="Lin")  # false colours
 
-
-
+par(mfrow=c(2,2))
+plotRGB(l2011, r=3, g=2, b=1, stretch="Lin")  # natural colours
+plotRGB(l2011, r=4, g=3, b=2, stretch="Lin")  # false colours
+plotRGB(l2011, r=3, g=4, b=2, stretch="Lin")  # false colours
+plotRGB(l2011, r=3, g=2, b=4, stretch="Lin")  # false colours
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 
 
