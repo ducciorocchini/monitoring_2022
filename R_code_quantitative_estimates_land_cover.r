@@ -4,6 +4,7 @@ library(raster)
 library(RStoolbox) # we will use this package to make the classification
 library(ggplot2) # we will use this package for the ggplot function
 # library(gridExtra) # we will use this package for multiframe ggplot
+library(patchwork)
 
 setwd("~/lab/") # Linux
 # setwd("C:/lab/") # Windows
@@ -95,11 +96,11 @@ ggplot(proportion, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="ident
 
 # plotting altogether
 
-# p1 <- ggplot(proportion, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="identity", fill="white")
-# p2 <- ggplot(proportion, aes(x=cover, y=prop2006, color=cover)) + geom_bar(stat="identity", fill="white")
+p1 <- ggplot(proportion, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="identity", fill="white")
+p2 <- ggplot(proportion, aes(x=cover, y=prop2006, color=cover)) + geom_bar(stat="identity", fill="white")
 
 # grid.arrange(p1, p2, nrows=1)
-
+p1+p2
 
 
 
