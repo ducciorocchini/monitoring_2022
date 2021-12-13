@@ -3,7 +3,8 @@
 library(raster)
 library(RStoolbox) # we will use this package to make the classification
 library(ggplot2) # we will use this package for the ggplot function
-# library(gridExtra) # we will use this package for multiframe ggplot
+library(gridExtra) # we will use this package for multiframe ggplot
+# install.packages("patchwork")
 library(patchwork)
 
 setwd("~/lab/") # Linux
@@ -27,8 +28,9 @@ l1992 <- list_rast[[1]]
 plotRGB(l1992, r=1, g=2, b=3, stretch="lin")
 
 l2006 <- list_rast[[2]]
-plotRGB(l2006, r=1, g=2, b=3, stretch="lin")
-
+plotRGB(l2l1992 <- list_rast[[1]]
+plotRGB(l1992, r=1, g=2, b=3, stretch="lin")
+  
 # Unsupervised classification
 l1992c <- unsuperClass(l1992, nClasses=2) # unsuperClass(x, nClasses) 
 l1992c
@@ -96,11 +98,51 @@ ggplot(proportion, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="ident
 
 # plotting altogether
 
-p1 <- ggplot(proportion, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="identity", fill="white")
-p2 <- ggplot(proportion, aes(x=cover, y=prop2006, color=cover)) + geom_bar(stat="identity", fill="white")
+p1 <- ggplot(proportion, aes(x=cover, y=prop1992, color=cover)) + geom_bar(stat="identity", fill="white") + ylim(0,1)
+p2 <- ggplot(proportion, aes(x=cover, y=prop2006, color=cover)) + geom_bar(stat="identity", fill="white") + ylim(0,1)
 
-# grid.arrange(p1, p2, nrow=1)
+# plot two graphs with gridExtra package
+grid.arrange(p1, p2, nrow=1)
+# or with patchwork package:
 p1+p2
+# if you want to put one graph on top of the other:
+p1/p2
+
+# patchworkn is working even with raster data, but they should be plotted with the ggplot2 package
+# instead of using plotRGB we are going to use ggRGB
+# Common stuff:
+plotRGB(l1992, r=1, g=2, b=3, stretch="Lin")
+ggRGB(l1992, r=1, g=2, b=3)
+ggRGB(l1992, r=1, g=2, b=3, stretch="lin")
+ggRGB(l1992, r=1, g=2, b=3, stretch="hist")
+ggRGB(l1992, r=1, g=2, b=3, stretch="sqrt")
+ggRGB(l1992, r=1, g=2, b=3, stretch="log")
+
+# patchwork
+gp1 <- ggRGB(l1992, r=1, g=2, b=3, stretch="lin")
+gp2 <- ggRGB(l1992, r=1, g=2, b=3, stretch="hist")
+gp3 <- ggRGB(l1992, r=1, g=2, b=3, stretch="sqrt")
+gp4 <- ggRGB(l1992, r=1, g=2, b=3, stretch="log")
+
+gp1 + gp2 + gp3 + gp4
+
+# multitemporal patchwork
+gp1 <- ggRGB(l1992, r=1, g=2, b=3)
+gp5 <- ggRGB(l2006, r=1, g=2, b=3)
+
+gp1 + gp5
+gp1 / gp5
+
+
+
+
+
+
+
+
+
+
+
 
 
 
