@@ -48,6 +48,9 @@ scale_fill_viridis(option="cividis") +
 ggtitle("cividis palette")
 
 
+#################################################### day 2
+
+
 
 
 
