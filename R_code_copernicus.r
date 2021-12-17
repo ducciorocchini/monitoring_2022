@@ -101,6 +101,18 @@ ext <- c(0, 20, 30, 50)
 ssummer_cropped <- crop(ssummer, ext)
 swinter_cropped <- crop(swinter, ext)
 
+p1 <- ggplot() + 
+geom_raster(ssummer_cropped, mapping = aes(x=x, y=y, fill=Snow.Cover.Extent.1)) +
+scale_fill_viridis(option="viridis") +
+ggtitle("Snow cover during my birthday!")
+
+p2 <- ggplot() + 
+geom_raster(swinter_cropped, mapping = aes(x=x, y=y, fill=Snow.Cover.Extent.2)) +
+scale_fill_viridis(option="viridis") +
+ggtitle("Snow cover during freezing winter!")
+
+p1 / p2
+
 
 
 
