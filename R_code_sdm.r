@@ -49,7 +49,10 @@ points(presences, pch=19)
 plot(preds$precipitation, col=cl)
 points(presences, pch=19)
 
+# day 2
+# importing the source script
 
+setwd("~/lab/")
 
 
 
