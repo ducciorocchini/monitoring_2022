@@ -52,9 +52,20 @@ points(presences, pch=19)
 # day 2
 # importing the source script
 
-setwd("~/lab/")
+setwd("~/lab/") # Linux
+# setwd("C:/lab/") # Windows
+# setwd("/Users/name/Desktop/lab/") # Mac 
 
+source("R_code_source_sdm.r")
 
+# in the theoretical slide of SDMs we should use individuals of a species and predictors 
+preds
+# these are the predictors: elevation, precipitation, temperature, vegetation 
+
+# Let's explain to the model what are the training and predictors data
+datasdm <- sdmData(train=species, predictors=preds)
+
+m1 <- sdm(Occurrence~temperature+elevation+precipitation+vegetation, data=datasdm, methods="glm")
 
 
 
